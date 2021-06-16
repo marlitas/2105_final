@@ -50,8 +50,13 @@ class TrainYard
   def unload(car, quantity)
     answer = sorted_cargo_list.include?(car.type) && (total_inventory[car] >= quantity)
     if answer == true
-      @trains.each do |train|
-        
+      trains.each do |train|
+        if train.cargo[car] <= quantity
+          quantity = quantity - train.cargo[car]
+          train.cargo[car] = 0
+        else
+          train.cargo[car] = train.cargo[car] - quantity
+        end
       end
     end
     answer
