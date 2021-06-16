@@ -87,5 +87,20 @@ RSpec.describe TrainYard do
     it 'can find overflow cars' do
       expect(@train_yard.overflow_cars).to eq([@car1])
     end
+
+    it 'can determine if trains can unload' do
+      expect(@train_yard.unload(@car3, 100)).to be false
+      expect(@train_yard.unload(@car1, 7)).to be true
+    end
+
+    it 'can unload' do
+      expect(@train_yard.unload(@car1, 7)).to be true
+      expect(@train_yard.trains.find do |train|
+        train = @train1
+      end.count_cars(@car1)).to eq(0)
+      expect(@train_yard.trains.find do |train|
+        train = @train2
+      end.count_cars(@car1)).to eq(1)
+    end
   end
 end

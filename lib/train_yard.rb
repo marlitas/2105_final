@@ -46,4 +46,14 @@ class TrainYard
       array.first
     end
   end
+
+  def unload(car, quantity)
+    answer = sorted_cargo_list.include?(car.type) && (total_inventory[car] >= quantity)
+    if answer == true
+      @trains.each do |train|
+        
+      end
+    end
+    answer
+  end
 end
