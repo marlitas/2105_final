@@ -16,16 +16,16 @@ RSpec.describe TrainYard do
     @train3 = Train.new({name: 'Nia', type: 'Tank'})
     @train4 = Train.new({name: 'Gordon', type: 'Express'})
 
-    @train1.add_cars(car1, 5)
-    @train1.add_cars(car2, 2)
+    @train1.add_cars(@car1, 5)
+    @train1.add_cars(@car2, 2)
 
-    @train2.add_cars(car1, 3)
-    @train2.add_cars(car4, 4)
+    @train2.add_cars(@car1, 3)
+    @train2.add_cars(@car4, 4)
 
-    @train3.add_cars(car1, 1)
+    @train3.add_cars(@car1, 1)
 
-    @train4.add_cars(car4, 5)
-    @train4.add_cars(car3, 10)
+    @train4.add_cars(@car4, 5)
+    @train4.add_cars(@car3, 10)
 
     @train_yard.add_train(@train1)
     @train_yard.add_train(@train2)
@@ -35,6 +35,10 @@ RSpec.describe TrainYard do
 
   it 'exists' do
     expect(@train_yard).to be_a(TrainYard)
+  end
+
+  it 'has attributes' do
+    expect(@train_yard.location).to eq('Brighton')
   end
 
   it 'can add trains' do
